@@ -97,7 +97,7 @@ Screenshots of the app (e.g., file upload screen, analysis view, plots) can be f
 ## Troubleshooting
 
 - **File Format Issues:**  
-  Ensure your GCT file conforms to the expected format. The first two lines should contain version/dimension info, followed by metadata, headers and expression data
+  Ensure your GCT file conforms to the expected format. The first two lines should contain version/dimension info, followed by metadata and numeric data.
 - **Performance:**  
   Larger files may take longer to process. Progress indicators will show the status.
 - **Installation Issues:**  
