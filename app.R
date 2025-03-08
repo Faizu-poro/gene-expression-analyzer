@@ -1,7 +1,7 @@
 # app.R
 
 # Load required packages
-required_packages <- c("shiny", "plotly", "reactable", "DT", "shinyFeedback", "dplyr", "tidyr", "ggplot2")
+required_packages <- c("shiny", "plotly", "reactable", "shinyFeedback", "dplyr", "tidyr", "ggplot2")
 for (pkg in required_packages) {
   if (!requireNamespace(pkg, quietly = TRUE)) {
     install.packages(pkg, repos = "http://cran.rstudio.com/")
@@ -19,7 +19,6 @@ if (!requireNamespace("preprocessCore", quietly = TRUE)) {
 library(shiny)
 library(plotly)
 library(reactable)
-library(DT)
 library(shinyFeedback)
 library(dplyr)
 library(tidyr)

@@ -19,7 +19,7 @@ A Shiny application for analyzing gene expression data from GCT files. Supports 
 The app will auto-install missing packages on first run. For manual setup:  
     ```r
     # Run these commands in R once:  
-    install.packages(c("shiny", "plotly", "reactable", "DT", "shinyFeedback", "dplyr", "tidyr", "ggplot2))  
+    install.packages(c("shiny", "plotly", "reactable", "shinyFeedback", "dplyr", "tidyr", "ggplot2))  
     if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager")  
     BiocManager::install("preprocessCore")  
 
@@ -30,8 +30,21 @@ The app will auto-install missing packages on first run. For manual setup:
     cd gene-expression-analyzer
 
 2. **Run the app**
-    ```bash
-    R -e "shiny::runApp('app.R')"
+    a. Linux:
+        ```bash
+        R -e "shiny::runApp('app.R')"
+
+    b. Rstudio:
+        i. Open Rstudio
+        ii. Set the current working directory to the folder containing app.R:
+        iii. Click the Run App button or 
+            ```r
+            shiny::runApp("app.R")
+    
+    c. R:
+        If you are running R outside of Rstudio, open R, set working directory to the cloned repository and execute:
+            ```r
+            shiny::runApp("app.R")    
 
 ### Usage
 1. **Upload a GCT File**
@@ -84,7 +97,7 @@ Screenshots of the app (e.g., file upload screen, analysis view, plots) can be f
 ## Troubleshooting
 
 - **File Format Issues:**  
-  Ensure your GCT file conforms to the expected format. The first two lines should contain version/dimension info, followed by metadata, headers and expression data
+  Ensure your GCT file conforms to the expected format. The first two lines should contain version/dimension info, followed by metadata and numeric data.
 - **Performance:**  
   Larger files may take longer to process. Progress indicators will show the status.
 - **Installation Issues:**  
