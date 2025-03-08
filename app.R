@@ -19,7 +19,6 @@ if (!requireNamespace("preprocessCore", quietly = TRUE)) {
 library(shiny)
 library(plotly)
 library(reactable)
-library(DT)
 library(shinyFeedback)
 library(dplyr)
 library(tidyr)
