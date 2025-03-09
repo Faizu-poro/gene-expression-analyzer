@@ -19,6 +19,7 @@ if (!requireNamespace("preprocessCore", quietly = TRUE)) {
 library(shiny)
 library(plotly)
 library(reactable)
+library(DT)
 library(shinyFeedback)
 library(dplyr)
 library(tidyr)
@@ -52,11 +53,11 @@ read_gct <- function(file_path) {
     metadata <- readLines(conn, n = n_metadata_rows)  # Read metadata rows
   }
   
-  # Read expression data (only n_data_rows rows)
+  # Read expression data
   expr_data <- read.delim(
     conn,
     header = FALSE,
-    nrows = n_data_rows,  # Read only the specified number of data rows
+    nrows = n_data_rows,
     col.names = col_headers,
     check.names = FALSE
   )
@@ -93,16 +94,16 @@ ui <- fluidPage(
   titlePanel("Gene Expression Analyzer"),
   sidebarLayout(
     sidebarPanel(
-      fileInput("gct_file", "Upload GCT File", accept = ".gct"), # define filename and text to appear for file upload
+      fileInput("gct_file", "Upload GCT File", accept = ".gct"), # Define filename and text to appear for file upload
       selectInput("norm_method", "Normalization Method:",
                   choices = c("Log2" = "log",
                               "Z-score" = "zscore",
                               "Quantile" = "quantile")),
-      uiOutput("norm_explanation"),  # render normalization explanation
-      actionButton("analyze", "Run Analysis", class = "btn-primary"), #define action button with name
-      hr(), # horizontal rule to seperate from analysis info
-      h4("Analysis Info"), # header for analysis details 
-      verbatimTextOutput("data_info") # render from server using gctfile and normalization method selected
+      uiOutput("norm_explanation"),  # Render normalization explanation
+      actionButton("analyze", "Run Analysis", class = "btn-primary"), 
+      hr(), 
+      h4("Analysis Info"),  
+      verbatimTextOutput("data_info") # Render from server using gctfile and normalization method selected
     ),
     mainPanel(
       # Define tabs and their titles
@@ -152,23 +153,22 @@ server <- function(input, output) {
                             sep = "\n"
                           )
     )
-    helpText(explanation) # return help with respect to norm_method selected by user
+    helpText(explanation) # Return help with respect to norm_method selected by user
   })
   
   # Reactive expression since we need it to change with error on reading the GCT file 
   gct_data <- reactive({ 
-    # Make sure file is uploadedd
     req(input$gct_file)
     # try block to catch exceptions
     tryCatch({
       # Check file extension and return error if invalid file
       if (tools::file_ext(input$gct_file$name) != "gct") { # Check if file extension is .gct
-        showFeedbackDanger("gct_file", "Please upload a .gct file") # Show error message
+        showFeedbackDanger("gct_file", "Please upload a .gct file") 
         return(NULL)
       }
       
       # Read the GCT file
-      data <- read_gct(input$gct_file$datapath) # Get temp path and use custom function to parse gct file and extract expression data
+      data <- read_gct(input$gct_file$datapath)
       
       # Return data for try block 
       data
@@ -188,7 +188,7 @@ server <- function(input, output) {
   norm_data <- eventReactive(input$analyze, {
     req(gct_data(), input$norm_method) # Gct file and user selected norm_method required
     withProgress(message = "Normalizing data...", {
-      normalize_data(gct_data(), input$norm_method) # call normalize function
+      normalize_data(gct_data(), input$norm_method)  
     })
   })
   
