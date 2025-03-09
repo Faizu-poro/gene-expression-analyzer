@@ -128,27 +128,27 @@ server <- function(input, output) {
     explanation <- switch(input$norm_method,
                           "log" = paste(
                             "Log2 Transformation:", 
-                            "• Converts data using a logarithmic scale (base 2).",
-                            "• Reduces skewness from extreme high/low values.", 
-                            "• Adds 1 to avoid log(0) errors.",
-                            "• Useful for visualizing gene expression trends.",
+                            "Converts data using a logarithmic scale (base 2).",
+                            "Reduces skewness from extreme high/low values.", 
+                            "Adds 1 to avoid log(0) errors.",
+                            "Useful for visualizing gene expression trends.",
                             sep = "\n"
                           ),
                           "zscore" = paste(
                             "Z-Score Normalization:", 
-                            "• Centers data: Subtracts the mean (average expression of each gene becomes 0).",
-                            "• Scales data: Divides by the standard deviation (variation becomes 1).", 
-                            "• Allows comparison of genes across different scales.",
-                            "• Use to highlight relative expression differences.",
+                            "Centers data: Subtracts the mean (average expression of each gene becomes 0).",
+                            "Scales data: Divides by the standard deviation (variation becomes 1).", 
+                            "Allows comparison of genes across different scales.",
+                            "Use to highlight relative expression differences.",
                             sep = "\n"
                           ),
                           "quantile" = paste(
                             "Quantile Normalization:", 
-                            "• Forces all samples to have the same statistical distribution.",
-                            "• Removes technical variations (e.g., batch effects).", 
-                            "• Preserves biological differences.",
-                            "• Commonly used in microarray/RNA-seq data.",
-                            "• Computationally intensive but highly effective.",
+                            "Forces all samples to have the same statistical distribution.",
+                            "Removes technical variations (e.g., batch effects).", 
+                            "Preserves biological differences.",
+                            "Commonly used in microarray/RNA-seq data.",
+                            "Computationally intensive but highly effective.",
                             sep = "\n"
                           )
     )
