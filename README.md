@@ -30,21 +30,21 @@ The app will auto-install missing packages on first run. For manual setup:
     cd gene-expression-analyzer
 
 2. **Run the app**
-    a. Linux:
-        ```bash
-        R -e "shiny::runApp('app.R')"
+a. Linux:
+    ```bash
+    R -e "shiny::runApp('app.R')"
 
-    b. Rstudio:
-        i. Open Rstudio
-        ii. Set the current working directory to the folder containing app.R:
-        iii. Click the Run App button or 
-            ```r
-            shiny::runApp("app.R")
+b. Rstudio:
+i. Open Rstudio
+ii. Set the current working directory to the folder containing app.R:
+iii. Click the Run App button or:
     
-    c. R:
-        If you are running R outside of Rstudio, open R, set working directory to the cloned repository and execute:
-            ```r
-            shiny::runApp("app.R")    
+    shiny::runApp("app.R")
+    
+c. R:
+If you are running R outside of Rstudio, open R, set working directory to the cloned repository and execute:
+    
+    shiny::runApp("app.R")    
 
 ### Usage
 1. **Upload a GCT File**
