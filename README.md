@@ -16,12 +16,12 @@ A Shiny application for analyzing gene expression data from GCT files. Supports 
 - RStudio (recommended)
 
 ### Installation  
-The app will auto-install missing packages on first run. For manual setup:  
-    ```r
+The app will auto-install missing packages on first run. For manual setup:
+
     # Run these commands in R once:  
-    install.packages(c("shiny", "plotly", "reactable", "shinyFeedback", "dplyr", "tidyr", "ggplot2))  
+    install.packages(c("shiny", "plotly", "reactable", "shinyFeedback", "dplyr", "tidyr", "ggplot2"))  
     if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager")  
-    BiocManager::install("preprocessCore")  
+    BiocManager::install("preprocessCore")
 
 ## Steps
 1. **Clone the repository**:
